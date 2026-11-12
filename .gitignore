@@ -1,0 +1,32 @@
+# Logs & Environment
+.env
+.env.local
+.env.*.local
+*.log
+
+# Maven & Java
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+backend/**/target/
+*.class
+.project
+.classpath
+.settings/
+.idea/
+*.iml
+*.iws
+
+# Node & Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.vite/
+frontend/coverage/
+*.tsbuildinfo
+
+# OS & Temp
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+.system_generated/
