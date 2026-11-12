@@ -1,12 +1,14 @@
 server:
+  address: 0.0.0.0
   port: ${PORT:8080}
+  forward-headers-strategy: native
 
 spring:
   application:
     name: tradetwin-backend
   data:
     mongodb:
-      uri: ${MONGODB_URI:}
+      uri: ${MONGODB_URI:mongodb://localhost:27017/tradetwin}
       auto-index-creation: true
   jackson:
     serialization:

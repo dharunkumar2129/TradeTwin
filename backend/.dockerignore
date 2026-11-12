@@ -1,0 +1,22 @@
+# Build outputs & Maven caches
+target/
+.mvn/timing.properties
+
+# Secrets & local environment files (never bake into Docker image)
+.env
+.env.*
+*.env
+!*.env.example
+
+# IDE & OS artifacts
+.git/
+.gitignore
+.idea/
+.vscode/
+.settings/
+.classpath
+.project
+*.iml
+*.log
+*.md
+mvnw.cmd

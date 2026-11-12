@@ -31,4 +31,11 @@ class JwtTokenProviderTest {
     void testInvalidToken() {
         assertFalse(tokenProvider.validateToken("invalid.token.structure"));
     }
+
+    @Test
+    @DisplayName("Should fail fast when JWT_SECRET is missing or shorter than 32 chars")
+    void testMissingOrShortSecretThrows() {
+        assertThrows(IllegalStateException.class, () -> new JwtTokenProvider("", 3600000L));
+        assertThrows(IllegalStateException.class, () -> new JwtTokenProvider("short-secret", 3600000L));
+    }
 }

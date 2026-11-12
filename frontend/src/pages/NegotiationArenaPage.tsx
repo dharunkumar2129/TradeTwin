@@ -166,7 +166,7 @@ export const NegotiationArenaPage: React.FC = () => {
       .catch(() => {});
 
     // SSE Stream
-    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/v1';
+    const apiBase = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/v1').replace(/\/+$/, '');
     const streamUrl = `${apiBase}/negotiations/${id}/stream`;
     const eventSource = new EventSource(streamUrl);
 

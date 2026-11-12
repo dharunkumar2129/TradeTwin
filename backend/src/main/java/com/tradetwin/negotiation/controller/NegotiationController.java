@@ -12,6 +12,7 @@ import com.tradetwin.negotiation.service.NegotiationOrchestrator;
 import com.tradetwin.user.model.User;
 import com.tradetwin.user.model.UserRole;
 import com.tradetwin.user.service.UserService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -118,7 +119,11 @@ public class NegotiationController {
     }
 
     @GetMapping(value = "/{id}/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public SseEmitter streamNegotiation(@PathVariable String id) {
+    public SseEmitter streamNegotiation(@PathVariable String id, HttpServletResponse response) {
+        // Prevent Nginx/Envoy HTTPS reverse proxies (e.g., Render) from buffering SSE frames
+        response.setHeader("X-Accel-Buffering", "no");
+        response.setHeader("Cache-Control", "no-cache, no-transform");
+        response.setHeader("Pragma", "no-cache");
         return sseStreamingHub.subscribe(id);
     }
 

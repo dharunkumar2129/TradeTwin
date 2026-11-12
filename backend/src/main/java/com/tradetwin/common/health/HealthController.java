@@ -11,13 +11,13 @@ import java.time.Instant;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/health")
+@RequestMapping({"/api/v1/health", "/api/health"})
 public class HealthController {
 
     @Value("${spring.application.name:tradetwin-backend}")
     private String applicationName;
 
-    @Value("${tradetwin.ai.gemini.model:gemini-3.8-flash}")
+    @Value("${tradetwin.ai.gemini.model:gemini-3.5-flash-lite}")
     private String geminiModel;
 
     @GetMapping
